@@ -51,7 +51,7 @@ const ToursList = () => {
   ]);
 
   return (
-    <div>
+    <div id="tours-container">
       {tours.map((tour, index) => (
         <Tour key={index} tour={tour} />
       ))}

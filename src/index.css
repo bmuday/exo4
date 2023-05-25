@@ -1,6 +1,9 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: rgb(240, 240, 240);
+  color: black;
+  font-size: 16px;
 }
 
 #app {
@@ -8,13 +11,76 @@ body {
   padding: 30px;
 }
 
+/* Responsive */
+#tours-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  padding: 10px;
+  height: 1200px;
+  border: 1px solid black;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 500px;
+  background-color: white;
+}
+
 .image-container {
 }
 
 .image-container img {
-  width: 450px;
-  height: 450px;
+  width: 300px;
+  height: 300px;
   border-radius: 5px;
   border: none;
   object-fit: cover;
+}
+
+.infos-container {
+}
+
+.title {
+}
+
+.description {
+}
+
+.read-more,
+.show-less {
+  color: rgb(0, 128, 43);
+  cursor: pointer;
+}
+
+.buttons-container {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.join-tour {
+  color: rgb(0, 106, 255);
+  border-color: rgb(0, 106, 255);
+  border-radius: 2px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.join-tour:hover {
+  transform: scale(1.1);
+}
+
+.not-interested {
+  color: rgb(255, 17, 0);
+  border-color: rgb(255, 17, 0);
+  border-radius: 2px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.not-interested:hover {
+  transform: scale(1.1);
 }
