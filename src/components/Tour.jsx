@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const Tour = ({ tour }) => {
-  let { price, source, location, days, description } = tour;
+const Tour = ({ tour, joinTour, removeTour }) => {
+  let { price, source, location, days, description, joined } = tour;
   let title = `Best Of ${location} In ${days} Days Tour`;
   const [fullDescription, setFullDescription] = useState(false);
   const [displayedDescription, setDisplayDescription] = useState(
@@ -18,30 +18,42 @@ const Tour = ({ tour }) => {
     setDisplayDescription(description);
   };
   return (
-    <div className="card">
-      <div className="image-container">
-        <img src={source} alt={location} />
-      </div>
-      <div className="infos-container">
-        <p className="title">{title}</p>
-        <p className="description">{displayedDescription}</p>
-        {description.length >= 30 && !fullDescription ? (
-          <p className="read-more" onClick={toggleMore}>
-            Read More
-          </p>
-        ) : (
-          <p className="show-less" onClick={toggleLess}>
-            Show Less
-          </p>
+    <article className={joined ? "joined-tour" : "single-tour"}>
+      <img src={source} alt={title} className="img" />
+      <span className="tour-price">$ {price}</span>
+      <div className="tour-info">
+        <h5>{title}</h5>
+        <h5>{joined && "joined"}</h5>
+        <p>
+          {displayedDescription}
+          {description.length >= 30 && !fullDescription ? (
+            <span className="info-btn" onClick={toggleMore}>
+              Read More
+            </span>
+          ) : (
+            <span className="info-btn" onClick={toggleLess}>
+              Show Less
+            </span>
+          )}
+        </p>
+        {!joined && (
+          <>
+            <button
+              className="join-btn btn-block btn"
+              onClick={() => joinTour(location)}
+            >
+              Join us !
+            </button>
+            <button
+              className="delete-btn btn-block btn"
+              onClick={() => removeTour(location)}
+            >
+              Not Interested
+            </button>
+          </>
         )}
-        <div className="buttons-container">
-          <button className="join-tour">
-            Join us for the Best Of {location} In {days} Days!
-          </button>
-          <button className="not-interested">Not Interested</button>
-        </div>
       </div>
-    </div>
+    </article>
   );
 };
 

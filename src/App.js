@@ -2,9 +2,13 @@ import ToursList from "./components/ToursList";
 
 function App() {
   return (
-    <div id="app">
+    <main id="app">
+      <div className="title">
+        <h2>Our Tours</h2>
+        <div className="title-underline"></div>
+      </div>
       <ToursList />
-    </div>
+    </main>
   );
 }
 
